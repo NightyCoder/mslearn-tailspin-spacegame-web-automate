@@ -27,7 +27,7 @@ stages:
           - task: SonarCloudPrepare@1
             displayName: 'Prepare analysis configuration'
             inputs:
-              SonarCloud: 'SC'
+              SonarCloud: 'SonarCloud'
               organization: 'kablovska0808'
               scannerMode: 'MSBuild'
               projectKey: 'kablovska0808_Provision-Infrastructure'
