@@ -72,6 +72,12 @@ stages:
           - publish: '$(Build.ArtifactStagingDirectory)'
             artifact: drop
 
+          - task: SonarCloudAnalyze@1
+            displayName: 'Run SonarCloud analysis'
+
+          - task: SonarCloudPublish@1
+            displayName: 'Publish results on build summary'
+
   - stage: 'Dev'
     displayName: 'Deploy to the dev environment'
     dependsOn: Build
