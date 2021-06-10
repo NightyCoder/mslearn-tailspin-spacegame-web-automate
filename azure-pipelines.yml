@@ -24,7 +24,14 @@ stages:
             displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
             inputs:
               version: '$(dotnetSdkVersion)'
-
+          - task: SonarCloudPrepare@1
+            displayName: 'Prepare analysis configuration'
+            inputs:
+              SonarCloud: 'SC'
+              organization: 'kablovska0808'
+              scannerMode: 'MSBuild'
+              projectKey: 'kablovska0808_Provision-Infrastructure'
+              projectName: 'Provision Infrastructure'
           - task: Npm@1
             displayName: 'Run npm install'
             inputs:
