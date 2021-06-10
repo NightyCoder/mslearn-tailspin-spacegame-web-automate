@@ -24,14 +24,15 @@ stages:
             displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
             inputs:
               version: '$(dotnetSdkVersion)'
-          - task: SonarCloudPrepare@1
-            displayName: 'Prepare analysis configuration'
-            inputs:
-              SonarCloud: 'SonarCloud'
-              organization: 'kablovska0808'
-              scannerMode: 'MSBuild'
-              projectKey: 'kablovska0808_Provision-Infrastructure'
-              projectName: 'Provision Infrastructure'
+#          - task: SonarCloudPrepare@1
+#            displayName: 'Prepare analysis configuration'
+#            inputs:
+#              SonarCloud: 'SonarCloud'
+#              organization: 'kablovska0808'
+#              scannerMode: 'MSBuild'
+#              projectKey: 'kablovska0808_Provision-Infrastructure'
+#              projectName: 'Provision Infrastructure'
+              
           - task: Npm@1
             displayName: 'Run npm install'
             inputs:
@@ -72,11 +73,11 @@ stages:
           - publish: '$(Build.ArtifactStagingDirectory)'
             artifact: drop
 
-          - task: SonarCloudAnalyze@1
-            displayName: 'Run SonarCloud analysis'
-
-          - task: SonarCloudPublish@1
-            displayName: 'Publish results on build summary'
+#           - task: SonarCloudAnalyze@1
+#            displayName: 'Run SonarCloud analysis'
+#
+#           - task: SonarCloudPublish@1
+#            displayName: 'Publish results on build summary'
 
   - stage: 'Dev'
     displayName: 'Deploy to the dev environment'
